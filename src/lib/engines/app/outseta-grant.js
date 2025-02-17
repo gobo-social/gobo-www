@@ -1,37 +1,5 @@
 import * as Bake from "@dashkite/bake";
 
-// const DAVID2 = {
-//   "nbf": 1737966877,
-//   "exp": 1738571677,
-//   "iss": "https://gobo.outseta.com",
-//   "client_id": "gobo.outseta.com.resource-owner",
-//   "scope": [
-//       "openid",
-//       "outseta",
-//       "profile"
-//   ],
-//   "sub": "NmdqLzgQ",
-//   "auth_time": 1737966877,
-//   "idp": "idsrv",
-//   "email": "real.david.harper+test01@gmail.com",
-//   "email_verified": true,
-//   "family_name": "Test",
-//   "given_name": "David",
-//   "name": "David Test",
-//   "nameid": "NmdqLzgQ",
-//   "outseta:accountUid": "VmAkK809",
-//   "outseta:isPrimary": "1",
-//   "outseta:subscriptionUid": "vWywxqkQ",
-//   "outseta:planUid": "496Gr7WX",
-//   "outseta:addOnUids": [],
-//   "amr": [
-//       "password"
-//   ],
-//   "aud": "gobo.outseta.com",
-//   "iat": 1737966877
-// }
-
-
 class OutsetaGrant {
   ADMIN_PLANS = [
     "496Gr7WX"
