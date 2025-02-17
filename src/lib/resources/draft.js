@@ -21,7 +21,7 @@ const remove = App.unauthorized(async ( draft ) => {
 
 const update = App.unauthorized(async ( draft ) => {
   const client = await Gobo.get();
-  return await client.personDraft.putt({
+  return await client.personDraft.put({
     parameters: { 
       person_id: client.id,
       id: draft.id

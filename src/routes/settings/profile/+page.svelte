@@ -5,55 +5,47 @@
   import BackLink from "$lib/components/primitives/BackLink.svelte";
   import "$lib/styles/buttons.css";
   import { onMount } from "svelte";
-  import { Gobo } from "$lib/engines/account.js";
+  import { State } from "$lib/engines/store.js";
+  import { Profile } from "$lib/engines/profile.js";
   import { profileStore } from "$lib/stores/profile";
 
-  let profile;
   let form, button, nameInput;
+  const Render = State.make();
+  Render.cleanup = () => {
+  };
 
-  const validate = function() {
+  Render.profile = ( profile ) => {
+    nameInput.value = profile.name ?? "";
+  };
+
+  const Handle = {};
+
+  Handle.isValid = () => {
     return form.reportValidity();  
   };
 
-  const issueRequest = async function () {
-    const client = await Gobo.get();
-    const data = new FormData( form );
-    profile.name = data.get( "name" );
-    profile.person_id = profile.id;
-
-    await client.personProfile.put( profile );
-    profileStore.updateProfile( profile );
-  };
-
-  const submit = async function () {
-    const isValid = validate();
-    if ( isValid === true ) {
-      await issueRequest();
-      button.loading = false;
-    } else {
-      button.loading = false;
+  Handle.submit = async ( event ) => {
+    event.preventDefault();
+    if ( button.loading === true ) {
+      return;
     }
+
+    button.loading = true;
+    if ( Handle.isValid() ) {
+      const formData = new FormData( form );
+      const data = {
+        name: formData.get( "name" ),
+      };
+      await Profile.update( data );
+    }
+
+    button.loading = false;
   };
 
   onMount( function () {
-    const listener = function(event) {
-      event.preventDefault();
-      if ( button.loading !== true ) {
-        button.loading = true;
-        submit();
-      }
-    }
-
-    form.addEventListener('submit', listener );
-
-    const unsubscribeProfileStore = profileStore.subscribe( function ( _profile ) {
-      profile = _profile
-      nameInput.value = profile.name;
-    });
-
-    return function () {
-      form.removeEventListener( "submit", listener );
-      unsubscribeProfileStore()
+    Render.listen( profileStore, Render.profile );
+    return () => {
+      Render.reset();
     }
   });
 </script>
@@ -61,7 +53,10 @@
 <div class="main-child">
   <BackLink heading="Profile"></BackLink>
 
-  <form bind:this={form} class="gobo-form">
+  <form 
+    bind:this={form} 
+    on:submit={Handle.submit} 
+    class="gobo-form">
     
     <sl-input
       bind:this={nameInput}

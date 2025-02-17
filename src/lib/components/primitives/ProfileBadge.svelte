@@ -1,20 +1,23 @@
 <script>
+  import { State } from "$lib/engines/store.js";
   import { profileStore } from "$lib/stores/profile";
-  import { onMount, onDestroy } from "svelte";
+  import { onMount } from "svelte";
   
-  let unsubscribeProfileStore;
-  let name; 
+  let name;
+  const Render = State.make();
+  Render.cleanup = () => {
+    name = "";
+  };
+
+  Render.profile = ( profile ) => {
+    name = profile.name ?? "";
+  };
 
   onMount( function () {
-    unsubscribeProfileStore = profileStore.subscribe( function ( profile ) {
-      if ( profile.name != null ) {
-        name = profile.name;
-      }
-    });
-  });
-
-  onDestroy( function () {
-    unsubscribeProfileStore();
+    Render.listen( profileStore, Render.profile );
+    return () => {
+      Render.reset();
+    };
   });
 </script>
 

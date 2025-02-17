@@ -5,10 +5,6 @@ import { Identity as IdentityEngine } from "$lib/engines/identity.js";
 import { Bootstrap } from "$lib/engines/bootstrap.js";
 import * as Welcome from "$lib/helpers/welcome.js";
 
-const exists = function ( value ) {
-  return value != null;
-};
-
 // The searchParams instance has some nuance for querystrings that we don't need.
 // Convert to plain object to make the individual handlers easier to write.
 const extractQuery = function ( url ) {
@@ -25,10 +21,9 @@ const handleCallbackError = async function () {
 };
 
 const successfulAuth = async () => {
-  App.refresh();
   await Bootstrap.run();
   
-  if ( !(await App.isAllowedAccess()) ) {
+  if ( await App.missingAccess( "general" )) {
     return goto( "/permissions" );
   }
 
@@ -43,32 +38,26 @@ const successfulAuth = async () => {
 const Callback = {};
 
 Callback.auth = async ( query ) => {
+  // TODO: Do we need the email verification flow for Outseta?
+
   // We're sent back to the callback origin after verifying our email address.
   // This will force a logout so the member can login again with an
   // email verification claim that's true.
-  if ( query.logout === "true" ) {
-    return await App.logout();
-  }
+  // if ( query.logout === "true" ) {
+  //   return await App.logout();
+  // }
 
   console.log( "Starting primary authentication callback", query );
-  const { state, code, error } = query;
+  const { access_token } = query;
 
-  if ( (await App.isLoggedOut()) ) {
-    try {
-      // Establishing the client is asynchronous, await the possible promise here.
-      const client = await Clients.getAuth0();
-
-      if ( exists(state) && ( exists(code) || exists(error) )) {
-        await client.handleRedirectCallback();
-        return await successfulAuth();
-      } else {
-        console.log( "auth callback lacks expected credentials", query );
-        return await handleCallbackError();
-      }
-    } catch ( error ) {
-      console.error( error );
+  if ( await App.isLoggedOut() ) {  
+    if ( !access_token ) {
+      console.log( "auth callback lacks expected credentials", query );
       return await handleCallbackError();
     }
+    await App.login({ token: access_token });
+    return await successfulAuth();
+  
   } else {
     // Passthrough for now. Happens if client back buttons to callback.
     console.log( "auth credentials already loaded" );
@@ -138,7 +127,7 @@ Route.default = async () => {
     // We can stop here.
   } else {
     try {
-      if ( (await App.isAllowedAccess()) ) {
+      if ( await App.hasAccess( "general" )) {
         // This person is allowed access to application features.
         return goto( "/home" );
       } else {

@@ -20,7 +20,6 @@
 
   // Now we can setup the store stuff with Svelte
   import Spinner from "$lib/components/primitives/Spinner.svelte";
-  import NavPageTriple from "$lib/components/layouts/NavPageTriple.svelte";
   import FeedOverlay from "$lib/components/layouts/FeedOverlay.svelte";
   import { beforeUpdate, onDestroy } from "svelte";
   import { themeStore } from "$lib/stores/theme.js";

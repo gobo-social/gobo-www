@@ -4,6 +4,17 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width" />
+    <script>
+      // https://gobo.outseta.com/auth?widgetMode=login#o-anonymous
+      var o_options = {
+          domain: 'gobo.outseta.com',
+          load: 'auth,customForm,emailList,leadCapture,nocode,profile,support',
+          monitorDom: true
+      };
+    </script>
+    <script src="https://cdn.outseta.com/outseta.min.js"
+            data-options="o_options">
+    </script>
     <noscript>
       <style>
         body {

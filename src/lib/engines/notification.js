@@ -184,7 +184,7 @@ Count.clear = async () => {
 // Special instantiation, when logged in, to pull data and send to listeners.
 // This cuts down on requests to the API and manages race conditions.
 Feed.startup = async () => {
-  if ( (await App.isAllowedAccess()) ) {
+  if ( await App.hasAccess( "general" )) {
     // Feed Polling state machine initial events to get started.
     Poll.event({ name: "listen" });
     Poll.event({ name: "fetch" });

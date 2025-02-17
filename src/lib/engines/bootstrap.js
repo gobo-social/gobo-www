@@ -1,12 +1,13 @@
-import * as Identity from "$lib/engines/identity.js";
-import * as Filter from "$lib/engines/filter.js";
-import * as Notification from "$lib/engines/notification.js";
-import * as Posts from "$lib/engines/feed/index.js";
-import * as Delivery from "$lib/engines/delivery/index.js";
-
 // Even though they're not used in this specific file, importing the engines
 // responsible for managing feed behavior need to be initialized reliablly.
 // We do that here.
+
+import "$lib/engines/identity.js";
+import "$lib/engines/filter.js";
+import "$lib/engines/notification.js";
+import "$lib/engines/feed/index.js";
+import "$lib/engines/delivery/index.js";
+import "$lib/engines/profile.js";
 
 import { App } from "$lib/engines/account.js";
 
