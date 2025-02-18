@@ -1,6 +1,6 @@
 import { goto } from "$app/navigation";
 import * as LS from  "$lib/helpers/local-storage.js";
-import { App, Clients, Gobo } from "$lib/engines/account.js";
+import { App, Gobo } from "$lib/engines/app/index.js";
 import { Identity as IdentityEngine } from "$lib/engines/identity.js";
 import { Bootstrap } from "$lib/engines/bootstrap.js";
 import * as Welcome from "$lib/helpers/welcome.js";

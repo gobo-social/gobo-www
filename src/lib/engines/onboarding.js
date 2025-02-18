@@ -1,5 +1,5 @@
 import * as LS from "$lib/helpers/local-storage.js";
-import { Gobo } from "$lib/engines/account.js";
+import { Gobo } from "$lib/engines/app/index.js";
 
 const Onboard = {};
 

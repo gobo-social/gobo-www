@@ -34,7 +34,7 @@
     if ( Handle.isValid() ) {
       const formData = new FormData( form );
       const data = {
-        name: formData.get( "name" ),
+        name: formData.get( "name" ) ?? "",
       };
       await Profile.update( data );
     }

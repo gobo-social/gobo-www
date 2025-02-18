@@ -2,7 +2,7 @@
   import "@shoelace-style/shoelace/dist/components/button/button.js";
   import PlainHeader from "$lib/components/headers/PlainHeader.svelte"
   import Center from "$lib/components/layouts/Center.svelte"
-  import { App } from "$lib/engines/account.js";
+  import { App } from "$lib/engines/app/index.js";
 
   const logout = async () => {
     await App.logout();

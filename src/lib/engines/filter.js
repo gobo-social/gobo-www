@@ -1,6 +1,6 @@
 import * as Resource from "$lib/resources/filter.js";
 import * as filterStores from "$lib/stores/filter.js";
-import { App } from "$lib/engines/account.js";
+import { App } from "$lib/engines/app/index.js";
 
 /***
 Filters have a serialized form we can pass around as state with the

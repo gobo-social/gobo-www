@@ -1,0 +1,39 @@
+/**
+* Here we override the Outseta styling to align their components with our style.
+* There is some risk here. We're going beyond what they support in their
+* console. But because these are not true Web Components with exposed :parts,
+* we take a brute-force approach below to get the theming aligned.
+*/
+
+.o--Widget--widgetBody {
+  --color-text: var(--gobo-color-text);
+  --font-family: var(--gobo-font-family);
+  --dark-mode-bg-color: var(--gobo-color-panel);
+  --color-slate-dark: var(--gobo-color-border-panel);
+  --color-text-secondary-dark: var(--gobo-color-text);
+
+  background: var(--gobo-color-panel) !important;
+  border: var(--gobo-border-panel);
+  border-radius: var(--gobo-border-radius);
+}
+
+.o--Widget--widgetBody a {
+  color: var(--gobo-color-link);
+}
+
+.o--Widget--widgetBody input {
+  background-color: var(--gobo-color-null) !important;
+}
+
+.o--Widget--widgetBody label,
+.o--Widget--widgetBody span {
+  color: var(--gobo-color-text) !important;
+}
+
+.o--PlanSelector--planListItem {
+  border-color: var(--gobo-color-text-muted) !important;
+}
+
+.o--PlanSelector--planListItem .o--PlanSelector--price {
+  opacity: 1 !important;
+}

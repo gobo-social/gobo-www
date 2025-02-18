@@ -1,11 +1,11 @@
-import { OutsetaGrant } from "$lib/engines/account/outseta-grant.js";
-import * as LocalStorage from "$lib/helpers/local-storage.js";
+import { OutsetaGrant } from "$lib/engines/app/outseta-grant.js";
+import * as LS from "$lib/helpers/local-storage.js";
 
 let singletonGrant;
 const Grant = {};
 
 Grant.fetch = async () => {
-  const token = LocalStorage.get( "outseta-token" );
+  const token = LS.read( "outseta-token" );
   return OutsetaGrant.make({ token });
 };
 
@@ -15,12 +15,12 @@ Grant.get = async () => {
 };
 
 Grant.make = async ({ token }) => {
-  LocalStorage.write( "outseta-token", token );
+  LS.write( "outseta-token", token );
   singletonGrant = OutsetaGrant.make({ token });
 };
 
 Grant.clear = () => {
-  LocalStorage.remove( "outseta-token" );
+  LS.remove( "outseta-token" );
   singletonGrant = null;
 };
 

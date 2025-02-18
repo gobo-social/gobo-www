@@ -1,4 +1,4 @@
-import { Grant } from "$lib/engines/app/index.js";
+import { App, Grant } from "$lib/engines/app/index.js";
 import * as Me from "$lib/resources/me.js";
 import * as PersonProfile from "$lib/resources/person-profile.js";
 import { profileStore } from "$lib/stores/profile.js";
@@ -13,10 +13,10 @@ Profile.get = () => {
 
 Profile.put = ( profile ) => {
   singletonProfile = profile;
-  profileStore.update( profile );
+  profileStore.set( profile );
 };
 
-Profile.load = App.unauthorized( async () => {
+Profile.load = async () => {
   const grant = await Grant.get();
   const profile = await Me.get();
 
@@ -24,13 +24,13 @@ Profile.load = App.unauthorized( async () => {
     profile.name = grant.claims.email;
   }
 
-  Profile.set( profile );
-});
+  Profile.put( profile );
+};
 
 Profile.update = async ( data ) => {
   const profile = Profile.get();
   Object.assign( profile, data );
-  Profile.set( profile );
+  Profile.put( profile );
   await PersonProfile.put( profile );
 };
 
@@ -41,8 +41,6 @@ Profile.startup = async () => {
     await Profile.load();
   }
 };
-
-App.register( Profile.startup );
 
 export {
   Profile

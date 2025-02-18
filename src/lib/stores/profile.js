@@ -7,12 +7,12 @@ const createStore = function () {
 
   return {
     subscribe,
-    setProfile: function ( data ) {
+    set: function ( data ) {
       update( function () {
         return data;
       });
     },
-    updateProfile: function ( data ) {
+    update: function ( data ) {
       update( function ( profile ) {
         Object.assign( profile, data );
         return profile;

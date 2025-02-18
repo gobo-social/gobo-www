@@ -1,6 +1,6 @@
 import * as Resource from "$lib/resources/identity.js";
 import * as identityStores from "$lib/stores/identity.js";
-import { App } from "$lib/engines/account.js";
+import { App } from "$lib/engines/app/index.js";
 
 let singletonList;
 

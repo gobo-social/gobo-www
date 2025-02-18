@@ -1,4 +1,4 @@
-import { Gobo, App } from "$lib/engines/account.js";
+import { Gobo, App } from "$lib/engines/app/index.js";
 
 
 const getPrettyName = function ( identity ) {

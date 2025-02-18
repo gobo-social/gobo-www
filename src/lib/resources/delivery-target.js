@@ -1,4 +1,4 @@
-import { Gobo, App } from "$lib/engines/account.js";
+import { Gobo, App } from "$lib/engines/app/index.js";
 
 const unpublish = App.unauthorized(async ({ person_id, id }) => {
   const client = await Gobo.get();

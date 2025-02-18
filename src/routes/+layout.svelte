@@ -17,6 +17,7 @@
   import "$lib/styles/switches.css";
   import "$lib/styles/buttons.css";
   import "$lib/styles/nav.css";
+  import "$lib/styles/outseta.css";
 
   // Now we can setup the store stuff with Svelte
   import Spinner from "$lib/components/primitives/Spinner.svelte";

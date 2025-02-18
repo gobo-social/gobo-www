@@ -1,6 +1,6 @@
 import { Feed as Weaver } from "$lib/resources/person-identity-feeds/posts.js";
 import * as stores from "$lib/stores/feed.js";
-import { App } from "$lib/engines/account.js";
+import { App } from "$lib/engines/app/index.js";
 
 
 /***

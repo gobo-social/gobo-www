@@ -2,7 +2,7 @@ import { Feed as Weaver } from "$lib/resources/person-identity-feeds/notificatio
 import * as stores from "$lib/stores/notification.js";
 import { Poll } from "$lib/polling/notifications.js";
 import { Cache } from "$lib/resources/cache.js";
-import { App } from "$lib/engines/account.js";
+import { App } from "$lib/engines/app/index.js";
 
 
 // Notifications have similar needs to the main post feed, so we use similar

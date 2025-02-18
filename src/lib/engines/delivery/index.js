@@ -1,4 +1,4 @@
-import { App } from "$lib/engines/account.js";
+import { App } from "$lib/engines/app/index.js";
 import { Weave } from "$lib/engines/delivery/weave.js";
 import { Preview } from "$lib/engines/link-preview.js";
 import * as stores from "$lib/stores/delivery.js";
