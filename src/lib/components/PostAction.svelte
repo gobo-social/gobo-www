@@ -107,6 +107,9 @@
     background: var(--gobo-color-panel);
     border: none;
   }
+  sl-button.placeholder {
+    cursor: inherit;
+  }
 </style>
 
 

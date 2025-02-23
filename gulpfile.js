@@ -7,7 +7,7 @@ const preview = function() {
 };
 
 const build = async function () {
-  await Task.Shell.run( "vite build" );
+  await Task.Shell.run( "vite build --minify=false" );
   await Task.Directory.copy({
     source: Path.resolve( "src", "lib", "styles" ),
     destination: Path.resolve( "build", "_styles" )

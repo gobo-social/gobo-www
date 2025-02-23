@@ -12,21 +12,27 @@
 
   const proxyActionTable = {
     "bluesky": [ "reply", "repost", "quote", "like" ],
-    "mastodon": [ "reply", "repost", "like" ],
-    "reddit": [ "upvote", "downvote", "reply" ],
-    "smalltown": [ "reply", "repost", "like" ],
+    "mastodon": [ "reply", "repost", "like", "placeholder" ],
+    "reddit": [ "upvote", "downvote", "reply", "placeholder" ],
+    "smalltown": [ "reply", "repost", "like", "placeholder" ],
   };
 
   let toggles = [ "like", "repost", "upvote", "downvote" ];
 
-  let proxyActions = proxyActionTable[ platform ];
+  let proxyActions = proxyActionTable[ platform ] ?? [];
   let edges = Cache.getPostEdge( identity, post );
 
-  const refresh = function () {
-    proxyActions = [ ...proxyActions ];
+  const refresh = () => {
+    const _proxyActions = [];
+    for (const action of proxyActions ?? []) {
+      if (action) {
+        _proxyActions.push(action)
+      }
+    }
+    proxyActions = [ ..._proxyActions ];
   }
 
-  const toggleEdge = async function ( name ) {
+  const toggleEdge = async ( name ) => {
     // Then make request, but invert conditional.
     if ( edges.has(name) ) {
       edges.delete( name );
@@ -38,7 +44,7 @@
     refresh();
   };
 
-  const isVoteInterlock = function ( name ) {
+  const isVoteInterlock = ( name ) => {
     return ( edges.has(name) !== true ) && 
       (
         ( name === "upvote" && edges.has("downvote") ) ||
@@ -46,8 +52,12 @@
       );
   };
 
-  const handle = async function ( event ) {
+  const handle = async ( event ) => {
     const { name } = event.detail;
+
+    if ( name === "placeholder" ) {
+      return;
+    }
 
     // The interlock condition is when you use a counter-vote to create two
     // state changes. Removing one edge and adding another.
@@ -83,14 +93,6 @@
       isActive={edges.has(name)}>
     </PostAction>
   {/each}
-  {#if proxyActions.length < 4 }
-    {#each { length: 4 - proxyActions.length } as i }
-      <PostAction 
-        name="placeholder"
-        isActive={false}
-      ></PostAction>
-    {/each}
-  {/if}
 </section>
 
 <style>
