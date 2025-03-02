@@ -114,7 +114,7 @@ Callback.identity = async ( query ) => {
   } catch ( error ) {
     console.error( error );
     Identity.clearStorage();
-    return goto( "/identities/add/failure" );
+    return goto( "/settings/identities/add/failure" );
   }
 };
 

@@ -86,6 +86,17 @@
       return;
     }
 
+    if ( login.startsWith( "." )) {
+      Inputs.alert( "blueskyLogin", "This is an invalid Bluesky username." );
+      return;
+    }
+
+    // Be forgiving for underspecified names. Assume main Bluesky instance.
+    if ( !/\./.test( login )) {
+      login = `${login}.bsky.social`;
+      context.blueskyLogin = login;
+    }
+
     if ( !context.blueskySecret ) {
       Inputs.alert( "blueskySecret", "Please provide a Bluesky secret." );
       return;
@@ -245,7 +256,7 @@
         on:input={Validate.clear}
         name="blueskyLogin"
         label="Bluesky Username"
-        help-text="Your full username, like gobo.bsky.social"
+        help-text="For example, gobo.bsky.social"
         autocomplete="off"
         size="medium"
         class="required">
@@ -256,11 +267,20 @@
         on:input={Validate.clear}
         name="blueskySecret"
         label="Bluesky Secret"
-        help-text='On Bluesky, go to Settings > App Passwords and click "Add App Password" to get a secret for Gobo'
         autocomplete="off"
         password
         size="medium"
         class="required">
+          <p class="help-text" slot="help-text">
+            On Bluesky, go to 
+            <a 
+              href="https://bsky.app/settings/app-passwords"
+              target="_blank" 
+              rel="noopener noreferrer nofollow">
+            Settings > Privacy and Security > App Passwords
+            </a> 
+            and click "Add App Password" to get a secret for Gobo.
+          </p>
       </sl-input>
 
       <div class="buttons">
@@ -309,7 +329,7 @@
         on:input={Validate.clear}
         name="mastodonURL"
         label="Mastodon Server URL"
-        help-text="For example, https://mastodon.social or mastodon.social (you can omit the prefix for convenience)"
+        help-text="For example, mastodon.social"
         autocomplete="off"
         size="medium"
         class="required">
@@ -352,7 +372,7 @@
         on:input={Validate.clear}
         name="smalltownURL"
         label="Smalltown Server URL"
-        help-text="For example, https://community.publicinfrastructure.org or community.publicinfrastructure.org (you can omit the prefix for convenience)"
+        help-text="For example, community.publicinfrastructure.org"
         autocomplete="off"
         size="medium"
         class="required">
@@ -380,5 +400,9 @@
 
   sl-alert sl-icon {
     color: var(--gobo-color-text);
+  }
+
+  .help-text {
+    font-size: 14px;
   }
 </style>
