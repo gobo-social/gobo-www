@@ -1,5 +1,4 @@
 <script>
-  import LeftNav from "$lib/components/headers/LeftNav.svelte";
   import MobileFilters from "$lib/components/MobileFilters.svelte";
   import Feed from "$lib/components/Feed.svelte";
   import IdentityFilters from "$lib/components/IdentityFilters.svelte";  
@@ -48,21 +47,19 @@
 
 
 <div class="panels" style:display={styles.display}>
-  <div class="left-nav">
-    <LeftNav {current}></LeftNav>
-  </div>
-  
-  <main class="main">
-    <MobileFilters></MobileFilters>
-    <Feed></Feed>
-  </main>
+  <div class="left-nav"></div>
 
   <aside>
-    <div class="aside-div">
+    <div class="aside-internal">
       <IdentityFilters></IdentityFilters>
       <GeneralFilters></GeneralFilters>
     </div>
   </aside>
+
+  <main class="main">
+    <MobileFilters></MobileFilters>
+    <Feed></Feed>
+  </main>
 </div>
 
 
@@ -82,6 +79,7 @@
   }
 
   main {
+    order: 2;
     flex: 0 1 calc( var(--gobo-max-width-primary) + (2 * var(--gobo-width-spacer-flex)) );
     margin: 0;
     padding: 0;
@@ -90,16 +88,29 @@
   }
 
   .left-nav {
+    order: 1;
     z-index: -1;
+    display: none;
   }
 
   @media ( min-width: 680px ) {
     .panels {
       top: 5rem;
     }
+    .left-nav {
+      display: inline-flex;
+      width: 6.3125rem; /* Careful here, this needs to mimic left nav */
+      height: 100%;
+    }
   }
 
-  @media ( max-width: 680px ) {    
+  @media ( min-width: 1300px ) {
+    .left-nav {
+      width: 16.125rem; /* Careful here, this needs to mimic left nav */
+    }
+  }
+
+  @media ( max-width: 680px ) {
     main {
       padding-left: 0;
       padding-right: 0;
@@ -107,10 +118,11 @@
   }
 
   aside {
+    order: 3;
     display: none;
   }
 
-  .aside-div {
+  .aside-internal {
     max-height: calc(100dvh - 4rem);
     overflow-y: scroll;
   }

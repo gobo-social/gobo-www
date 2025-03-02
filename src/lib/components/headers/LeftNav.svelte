@@ -25,14 +25,15 @@
 
   const Handle = {};
 
+  // TODO: We need logical path names.
   Handle.refreshHome = () => {
-    if ( current === "home" ) {
+    if ( window.location.pathname === "/home" ) {
       Feed.refresh();
     }
   };
   
   Handle.refreshNotifications = () => {
-    if ( current === "notifications" ) {
+    if ( window.location.pathname === "/notifications" ) {
       Notifications.refresh();
     }
   };

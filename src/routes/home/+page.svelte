@@ -20,8 +20,3 @@
     };
   });
 </script>
-
-
-<!-- <MobileFilters></MobileFilters> -->
-<!-- <Feed></Feed> -->
-

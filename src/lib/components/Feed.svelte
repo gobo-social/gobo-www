@@ -6,7 +6,7 @@
   import { Feed } from "$lib/engines/feed/index.js";
   import { State } from "$lib/engines/store.js";
   import { Scroll } from "$lib/engines/scroll.js";
-  // import * as scrollStores from "$lib/stores/scroll.js";
+  import { NavCommands } from '$lib/channels/nav-commands.js';
   import * as feedStores from "$lib/stores/feed.js";
   import * as LS from "$lib/helpers/local-storage.js";
 
@@ -67,6 +67,26 @@
     }
   };
 
+  Handle.commandNav = ( event ) => {
+    if (window.location.pathname !== "/home") {
+      return;
+    }
+    if ( event.detail.name === "scroll top" ) {
+      _feed.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+      });
+    }
+    if ( event.detail.name === "scroll bottom" ) {
+      _feed.scrollTo({
+        top: _feed.scrollHeight,
+        left: 0,
+        behavior: "smooth"
+      });
+    }
+  };
+
   Handle.scroll = ( event ) => {
     scroll.event( event );
   };
@@ -91,7 +111,9 @@
     Render.listen( feedStores.command, Handle.command );
     _feed.addEventListener( "scroll", Handle.scroll );
     _feed.addEventListener( "gobo-infinite-scroll", Handle.infiniteScroll );
+    const navCommandsTarget = NavCommands.listen( Handle.commandNav );
     return () => {
+      NavCommands.stop( navCommandsTarget );
       _feed.removeEventListener( "scroll", Handle.scroll );
       _feed.removeEventListener( "gobo-infinite-scroll", Handle.infiniteScroll );
       scroll.halt();

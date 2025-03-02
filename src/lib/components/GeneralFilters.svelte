@@ -10,9 +10,11 @@
 <section class="outer-frame">
 
   <header>
-    <sl-icon src="/icons/filter.svg" />
-    <h2>Filters</h2>
-    <sl-icon-button src="/icons/arrow-right.svg" href="/settings/filters" />
+    <a class="header-link" href="/settings/filters" >
+      <sl-icon src="/icons/filter.svg" />
+      <h2>Filters</h2>
+      <sl-icon src="/icons/arrow-right.svg"/>
+    </a>
   </header>
 
   
@@ -44,13 +46,18 @@
   }
 
   header {
+    width: 100%;
+    padding: 0.25rem calc(var(--gobo-width-spacer) - 0.5rem);
+    border-bottom: var(--gobo-border-panel);
+    margin-bottom: var(--gobo-height-spacer-flex);
+  }
+
+  header a {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 0.75rem var(--gobo-width-spacer);
-    border-bottom: var(--gobo-border-panel);
-    margin-bottom: var(--gobo-height-spacer-flex);
-    width: 100%;
+    padding: 0.5rem 0.5rem;
+    color: inherit;
   }
 
   header sl-icon {
