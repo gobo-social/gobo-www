@@ -1,5 +1,7 @@
+import { goto } from "$app/navigation";
 import { Grant } from "$lib/engines/app/grant.js";
 import { Gobo } from "$lib/engines/app/gobo-client.js";
+import * as LS from "$lib/helpers/local-storage.js";
 import { PUBLIC_APP_LOGIN_URL } from '$env/static/public';
 
 
@@ -7,12 +9,16 @@ import { PUBLIC_APP_LOGIN_URL } from '$env/static/public';
 const App = {};
 
 App.startupList = [];
+App.shutdownList = [];
 
-App.register = ( f ) => App.startupList.push( f );
+App.registerStartup = ( f ) => App.startupList.push( f );
+App.registerShutdown = ( f ) => App.shutdownList.push( f );
 
 App.clear = async () => {
+  await App.shutdown();
   Grant.clear();
   Gobo.clear();
+  LS.clear();
 };
 
 App.login = async ({ token }) => {
@@ -58,11 +64,27 @@ App.startup = async () => {
     promises.push( f() );
   }
 
-  // TODO: Generalize this, or write it inline. 
-  // This only works because the unauthorized cases pertain to Gobo API.
-  await App.unauthorized( async () => {
+  try {
     await Promise.all( promises );
-  })();
+  } catch ( error ) {
+    console.error( "encountered problem during login", error );
+    await App.shutdown();
+    goto( "/login-problem" );
+  }
+};
+
+App.shutdown = async () => {
+  const promises = [];
+  for ( const f of App.shutdownList ) {
+    promises.push( f() );
+  }
+
+  try {
+    await Promise.all( promises );
+  } catch ( error ) {
+    console.error( "encountered problem during shutdown", error );
+    LS.clear(); // Best effort to cleanup in the worst case.
+  }  
 };
 
 App.isLoggedOut = async () => {

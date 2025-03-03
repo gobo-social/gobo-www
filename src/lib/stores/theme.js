@@ -10,7 +10,7 @@ const createStore = function () {
   let theme;
 
   if ( browser ) {
-    theme = LS.read( "gobo-theme" );
+    theme = LS.read( "gobo.theme" );
 
     if ( theme == null ) {
       if ( prefersDark() === true ) {
@@ -25,7 +25,7 @@ const createStore = function () {
         };
       }
     
-      LS.write( "gobo-theme", theme );
+      LS.write( "gobo.theme", theme );
     }
   } else {
     theme = { dark: true };
@@ -38,42 +38,42 @@ const createStore = function () {
     toggleDark: function () {
       update( function (theme) {
         theme.dark = !theme.dark;
-        LS.write( "gobo-theme", theme );
+        LS.write( "gobo.theme", theme );
         return theme;
       });
     },
     setDark: function () {
       update( function ( theme ) {
         theme.dark = true;
-        LS.write( "gobo-theme", theme );
+        LS.write( "gobo.theme", theme );
         return theme;
       });
     },
     setLight: function () {
       update( function ( theme ) {
         theme.dark = false;
-        LS.write( "gobo-theme", theme );
+        LS.write( "gobo.theme", theme );
         return theme; 
       });
     },
     setArial: function () {
       update( function ( theme ) {
         theme.arial = true;
-        LS.write( "gobo-theme", theme );
+        LS.write( "gobo.theme", theme );
         return theme;
       });
     },
     setRoboto: function () {
       update( function ( theme ) {
         theme.arial = false;
-        LS.write( "gobo-theme", theme );
+        LS.write( "gobo.theme", theme );
         return theme;
       });
     },
     setFontSize: function ( size ) {
       update( function ( theme ) {
         theme.fontSize = size;
-        LS.write( "gobo-theme", theme );
+        LS.write( "gobo.theme", theme );
         return theme;
       });
     }

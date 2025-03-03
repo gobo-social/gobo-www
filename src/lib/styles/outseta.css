@@ -13,12 +13,28 @@
   --color-text-secondary-dark: var(--gobo-color-text);
 
   background: var(--gobo-color-panel) !important;
-  border: var(--gobo-border-panel);
   border-radius: var(--gobo-border-radius);
 }
 
-.o--Widget--widgetBody a {
+.outseta-embed-reshape .o--Widget--widgetBody {
+  --color-text: var(--gobo-color-text);
+  --font-family: var(--gobo-font-family);
+  --dark-mode-bg-color: var(--gobo-color-panel);
+  --color-slate-dark: var(--gobo-color-border-panel);
+  --color-text-secondary-dark: var(--gobo-color-text);
+
+  background: var(--gobo-color-panel) !important;
+  border: none;
+  border-radius: var(--gobo-border-radius);
+  padding-top: 1.5rem;
+  padding-bottom: 0;
+}
+
+.o--Widget--widgetBody a,
+.outseta-embed-reshape .o--Widget--widgetBody a {
   color: var(--gobo-color-link);
+  text-decoration: none;
+  font-weight: var(--gobo-font-weight-black);
 }
 
 .o--Widget--widgetBody input {
@@ -26,8 +42,12 @@
 }
 
 .o--Widget--widgetBody label,
-.o--Widget--widgetBody span {
+.o--Widget--widgetBody span:not(.o--Button--children) {
   color: var(--gobo-color-text) !important;
+}
+
+.o--Widget--widgetBody .o--Button--btn.o--Button--buttonStyle-solid .o--Button--children {
+  color: #FFFFFF;
 }
 
 .o--PlanSelector--planListItem {
@@ -36,4 +56,8 @@
 
 .o--PlanSelector--planListItem .o--PlanSelector--price {
   opacity: 1 !important;
+}
+
+.outseta-embed-reshape .o--App--profileWidget .o--App--widgetBody {
+  margin: -24px;
 }

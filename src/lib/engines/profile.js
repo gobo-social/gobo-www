@@ -19,12 +19,17 @@ Profile.put = ( profile ) => {
 Profile.load = async () => {
   const grant = await Grant.get();
   const profile = await Me.get();
+  // TODO: Do we want to make this configurable based on name? And if so,
+  // do we need a way to propogate name updates without a login flow?
+  const name = grant.claims.email;
 
-  if ( !profile.name ) {
-    profile.name = grant.claims.email;
+  if ( profile.name !== name ) {
+    profile.name = name;
+    Profile.put( profile );
+    Profile.update( profile );
+  } else {
+    Profile.put( profile );
   }
-
-  Profile.put( profile );
 };
 
 Profile.update = async ( data ) => {

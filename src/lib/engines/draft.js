@@ -89,7 +89,7 @@ Draft.reconcile = ( draft ) => {
 
 Draft.read = () => {
   if ( singletonDraft == null ) {
-    let draft = LS.read( "gobo-draft" );
+    let draft = LS.read( "gobo.draft" );
     
     if ( draft == null ) {
       singletonDraft = Draft.make();
@@ -111,7 +111,7 @@ Draft.write = () => {
     files.push( draftFile._ );
   }
   draft.attachments = files;
-  LS.write( "gobo-draft", draft );
+  LS.write( "gobo.draft", draft );
 }
 
 

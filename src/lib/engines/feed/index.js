@@ -192,7 +192,14 @@ Feed.startup = async () => {
   }
 };
 
-App.register( Feed.startup );
+Feed.shutdown = () => {
+  // Halt feed weaver pulling before discarding old object.
+  Feed.halt();
+  singletonFeed = null;
+};
+
+App.registerStartup( Feed.startup );
+App.registerShutdown( Feed.shutdown );
 
 
 export {

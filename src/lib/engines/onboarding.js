@@ -4,10 +4,10 @@ import { Gobo } from "$lib/engines/app/index.js";
 const Onboard = {};
 
 Onboard.stow = ( context ) => {
-  LS.write( "gobo-platform", context.platform );
-  LS.write( "gobo-baseURL", context.baseURL );
-  LS.write( "gobo-bluesky-login", context.blueskyLogin );
-  LS.write( "gobo-bluesky-secret", context.blueskySecret );
+  LS.write( "gobo.platform", context.platform );
+  LS.write( "gobo.baseURL", context.baseURL );
+  LS.write( "gobo.bluesky-login", context.blueskyLogin );
+  LS.write( "gobo.bluesky-secret", context.blueskySecret );
 };
 
 Onboard.start = async ( context ) => {

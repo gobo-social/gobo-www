@@ -28,7 +28,7 @@
 
   Render.state = () => {
     // Checks to see if we're expecting a delay in feed visibility.
-    const isBuilding = LS.read( "gobo-building-feed" );
+    const isBuilding = LS.read( "gobo.building-feed" );
     
     if ( posts.length === 0 ) {
       if ( isBuilding === true ) {
@@ -38,7 +38,7 @@
       }
     } else {
       state = "ready";
-      LS.remove( "gobo-building-feed" );
+      LS.remove( "gobo.building-feed" );
     }
   };
 

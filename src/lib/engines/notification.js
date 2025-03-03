@@ -198,7 +198,12 @@ Feed.startup = async () => {
   }
 };
 
-App.register( Feed.startup );
+Feed.shutdown = () => {
+  Poll.event({ name: "halt" });
+}
+
+App.registerStartup( Feed.startup );
+App.registerShutdown( Feed.shutdown );
 
 
 export {

@@ -70,10 +70,10 @@ const Identity = {};
 
 // Housekeeping to prevent storing secret values inappropriately.
 Identity.clearStorage = () => {
-  LS.remove( "gobo-platform" );
-  LS.remove( "gobo-baseURL" );
-  LS.remove( "gobo-bluesky-login" );
-  LS.remove( "gobo-bluesky-secret" );
+  LS.remove( "gobo.platform" );
+  LS.remove( "gobo.baseURL" );
+  LS.remove( "gobo.bluesky-login" );
+  LS.remove( "gobo.bluesky-secret" );
 };
 
 // The HTTP API endpoint for this second step is robust enough to handle
@@ -83,10 +83,10 @@ Identity.add = async ( query ) => {
 
   await client.actionOnboardIdentityCallback.post({ 
     content: {
-      platform: LS.read( "gobo-platform" ),
-      base_url: LS.read( "gobo-baseURL" ),
-      bluesky_login: LS.read( "gobo-bluesky-login" ) ?? undefined,
-      bluesky_secret: LS.read( "gobo-bluesky-secret" ) ?? undefined,
+      platform: LS.read( "gobo.platform" ),
+      base_url: LS.read( "gobo.baseURL" ),
+      bluesky_login: LS.read( "gobo.bluesky-login" ) ?? undefined,
+      bluesky_secret: LS.read( "gobo.bluesky-secret" ) ?? undefined,
       oauth_token: query.oauth_token ?? undefined,
       oauth_verifier: query.oauth_verifier ?? undefined,
       code: query.code ?? undefined,
@@ -100,14 +100,14 @@ Callback.identity = async ( query ) => {
   
   try {
     // POSTs aren't idempotent, so we use baseURL to detect duplication.
-    if ( LS.read( "gobo-baseURL" ) == null ) {
+    if ( LS.read( "gobo.baseURL" ) == null ) {
       Identity.clearStorage();
       return goto( "/settings/identities" );
     }
 
     await Identity.add( query );
     Identity.clearStorage();
-    LS.write( "gobo-building-feed", true );
+    LS.write( "gobo.building-feed", true );
     IdentityEngine.refresh();
     return goto( "/settings/identities" );
   

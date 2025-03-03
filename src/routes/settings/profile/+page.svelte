@@ -82,11 +82,37 @@
    
   </form>
 
+  <section class="outseta-embed-reshape">
+    <div
+      data-o-profile="1"
+      data-mode="embed">
+    </div>
+  </section>
+
+  <!-- <div
+    data-o-profile="1"
+    data-mode="embed">
+  </div> -->
+
+
 </div>
 
 
 <style>
+  form {
+    display: none;
+  }
+
   sl-input {
     margin-bottom: 0;
+  }
+
+  /* 
+    Negative margin comes from
+    .o--App--profileWidget .o--App--widgetBody
+  */
+  .outseta-embed-reshape {
+    margin-top: var(--gobo-height-spacer);
+    /* padding: 48px 32px;   */
   }
 </style>

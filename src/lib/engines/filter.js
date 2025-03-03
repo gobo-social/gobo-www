@@ -421,7 +421,12 @@ Filter.startup = async () => {
   }
 };
 
-App.register( Filter.startup );
+Filter.shutdown = () => {
+  singletonList = null;
+};
+
+App.registerStartup( Filter.startup );
+App.registerShutdown( Filter.shutdown );
 
 
 export {

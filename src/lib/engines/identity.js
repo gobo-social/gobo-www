@@ -127,8 +127,12 @@ Identity.startup = async () => {
   }
 };
 
-App.register( Identity.startup );
+Identity.shutdown = () => {
+  singletonList = null;
+};
 
+App.registerStartup( Identity.startup );
+App.registerShutdown( Identity.shutdown )
 
 
 

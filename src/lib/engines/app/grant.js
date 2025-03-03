@@ -5,7 +5,7 @@ let singletonGrant;
 const Grant = {};
 
 Grant.fetch = async () => {
-  const token = LS.read( "outseta-token" );
+  const token = LS.read( "gobo.outseta-token" );
   return OutsetaGrant.make({ token });
 };
 
@@ -15,12 +15,12 @@ Grant.get = async () => {
 };
 
 Grant.make = async ({ token }) => {
-  LS.write( "outseta-token", token );
+  LS.write( "gobo.outseta-token", token );
   singletonGrant = OutsetaGrant.make({ token });
 };
 
 Grant.clear = () => {
-  LS.remove( "outseta-token" );
+  LS.remove( "gobo.outseta-token" );
   singletonGrant = null;
 };
 
