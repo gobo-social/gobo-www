@@ -29,18 +29,12 @@ Identity.put = () => {
 Identity.findIndex = async ( id ) => {
   const list = await Identity.read();
   const index = list.findIndex( i => i.id == id ); // TODO: Until we fix ID types.
-  if ( index < 0 ) {
-    throw new Error( `unable to find identity ${ id }` );
-  }
   return index;
 };
 
 Identity.find = async ( id ) => {
   const list = await Identity.read();
   const match = list.find( i => i.id == id ); // TODO: Until we fix ID types.
-  if ( match == null ) {
-    throw new Error( `unable to find identity ${ id }` );
-  }
   return match;
 };
 

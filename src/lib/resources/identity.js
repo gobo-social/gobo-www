@@ -12,14 +12,7 @@ const getPrettyName = function ( identity ) {
       return `u/${ username }`;
     case "mastodon":
     case "smalltown":
-      // We just want the hostname to form a fully specified Mastodon reference.
-      if ( base_url.startsWith( "https://" ) === true ) {
-        let url = new URL( base_url );
-        hostname = url.hostname;
-      } else {
-        hostname = base_url;
-      }      
-      return `@${ username }@${ hostname }`;
+      return `@${ username }`;
     case "linkedin":
       return username;
   }
