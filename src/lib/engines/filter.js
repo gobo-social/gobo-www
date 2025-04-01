@@ -55,7 +55,7 @@ Filter.put = () => {
 
 Filter.findIndex = async ( id ) => {
   const list = await Filter.read();
-  const index = list.findIndex( f => f.id == id ); // TODO: Until we fix ID types.
+  const index = list.findIndex( f => f.id === id );
   if ( index === -1 ) {
     throw new Error( `unable to find filter ${ id }` );
   }
@@ -64,7 +64,7 @@ Filter.findIndex = async ( id ) => {
 
 Filter.find = async ( id ) => {
   const list = await Filter.read();
-  const match = list.find( f => f.id == id ); // TODO: Until we fix ID types.
+  const match = list.find( f => f.id === id );
   if ( match == null ) {
     throw new Error( `unable to find filter ${ id }` );
   }

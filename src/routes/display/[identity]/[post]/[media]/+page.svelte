@@ -26,7 +26,7 @@
     bindings = {
       identity: value.identity,
       post: value.post,
-      media: Number( value.media )
+      media: value.media
     };
 
     if ( post == null || post.id !== value.post ) {

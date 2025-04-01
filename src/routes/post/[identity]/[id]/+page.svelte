@@ -15,8 +15,8 @@
 
   // TODO: when we update IDs to strings, remove this.
   Render.bindings = () => {
-    identity = Number( data.bindings.identity );
-    id = Number( data.bindings.id );
+    identity = data.bindings.identity;
+    id = data.bindings.id;
   };
 
   onMount(() => {
