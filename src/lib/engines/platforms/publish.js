@@ -1,4 +1,5 @@
 import * as Value from "@dashkite/joy/value";
+import { Draft as DraftEngine } from "$lib/engines/draft.js"
 import { Draft, Delivery } from "$lib/engines/delivery/index.js";
 import { Metadata } from "$lib/engines/platforms/metadata.js";
 import * as PostHTTP from "$lib/resources/post.js";
@@ -15,7 +16,7 @@ Publish.buildTargets = async ( raw ) => {
         targets.push({ identity: identity.id, stash });
       } catch ( error ) {
         console.error( error );
-        Draft.pushAlert( `Unable to prepare post for platform ${ identity?.platform }.` );
+        DraftEngine.pushAlert( `Unable to prepare post for platform ${ identity?.platform }.` );
         targets.push( false );
       }
     }
@@ -30,7 +31,7 @@ Publish.uploadMedia = async ( draft ) => {
     return true;
   } catch ( error ) {
     console.error( error );
-    Draft.pushAlert( "failed to upload attachments" );
+    DraftEngine.pushAlert( "failed to upload attachments" );
     return false;
   }
 }
