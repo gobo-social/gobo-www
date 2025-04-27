@@ -1,23 +1,45 @@
 production-www:
   namespace: gobo
   buckets:
-    - name: gobo.freeformflow.com
+    - name: gobo-social.com
       website:
         index: index.html
         error: index.html
+    - name: www.gobo-social.com
+      redirect: gobo-social.com
   edge:
     name: www
     certificate:
-      verification: freeformflow.com
+      verification: gobo-social.com
     origins:
-      - domain: gobo.freeformflow.com.s3-website-us-east-1.amazonaws.com
+      - domain: gobo-social.com.s3-website-us-east-1.amazonaws.com
+        protocol: http
+      - domain: www.gobo-social.com.s3-website-us-east-1.amazonaws.com
         protocol: http     
     aliases:
-      - gobo.freeformflow.com
-    ttl:
-      default: 86400
-      min: 0
-      max: 31536000 # 1 year
+      - gobo-social.com
+      - www.gobo-social.com
+
+# production-www:
+#   namespace: gobo
+#   buckets:
+#     - name: gobo.freeformflow.com
+#       website:
+#         index: index.html
+#         error: index.html
+#   edge:
+#     name: www
+#     certificate:
+#       verification: freeformflow.com
+#     origins:
+#       - domain: gobo.freeformflow.com.s3-website-us-east-1.amazonaws.com
+#         protocol: http     
+#     aliases:
+#       - gobo.freeformflow.com
+#     ttl:
+#       default: 86400
+#       min: 0
+#       max: 31536000 # 1 year
 
 # production-api:
 #   namespace: gobo

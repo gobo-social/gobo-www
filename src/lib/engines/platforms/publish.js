@@ -15,7 +15,7 @@ Publish.buildTargets = async ( raw ) => {
         targets.push({ identity: identity.id, stash });
       } catch ( error ) {
         console.error( error );
-        Delivery.pushAlert( `Unable to prepare post for platform ${ identity?.platform }.` );
+        Draft.pushAlert( `Unable to prepare post for platform ${ identity?.platform }.` );
         targets.push( false );
       }
     }
@@ -30,7 +30,7 @@ Publish.uploadMedia = async ( draft ) => {
     return true;
   } catch ( error ) {
     console.error( error );
-    Delivery.pushAlert( "failed to upload attachments" );
+    Draft.pushAlert( "failed to upload attachments" );
     return false;
   }
 }
