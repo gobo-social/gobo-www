@@ -45,7 +45,7 @@ dependencies:
     specifier: ^0.4.0
     version: 0.4.0
   '@dashkite/reactive':
-    specifier: ^0.0.2
+    specifier: 0.0.2
     version: 0.0.2
   '@dashkite/talos':
     specifier: 0.0.3
