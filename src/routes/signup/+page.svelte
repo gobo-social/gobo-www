@@ -1,5 +1,6 @@
 <script>
   import PlainHeader from "$lib/components/headers/PlainHeader.svelte"
+  import PlainFooter from "$lib/components/headers/PlainFooter.svelte";
   import Center from "$lib/components/layouts/Center.svelte"
 </script>
 
@@ -20,11 +21,20 @@
     </div>
 
     <section class="alt-nav">
-      <p>Already have an account? <a href="/login"> Log in </a></p>
+      <p>By signing up, you agree to Gobo's
+        <a href="/terms-of-service" target="_blank" rel="noopener noreferrer nofollow">
+          Terms&nbsp;of&nbsp;Service
+        </a> and 
+        <a href="/privacy-policy" target="_blank" rel="noopener noreferrer nofollow">
+          Privacy&nbsp;Policy.
+        </a>
+      </p>
+      <p>Already have a Gobo account? <a href="/login"> Log in </a></p>
     </section>
   </section>
   
 </Center>
+<PlainFooter></PlainFooter>
 
 <style>
   #outseta-signup {
@@ -35,18 +45,21 @@
     width: 100%;
     max-width: 500px;
     margin-top: var(--gobo-height-spacer);
-    padding-bottom: 3rem;
     background: var(--gobo-color-panel);
     border-radius: var(--gobo-border-radius);
     border: var(--gobo-border-panel);
   }
 
   .alt-nav {
-    width: 100%;
     display: flex;
-    justify-content: center;
-    margin-top: var(--gobo-height-spacer);
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
     font-size: 15px;
+    margin-block-start: 4rem;
+    margin-inline: 2rem;
+    padding-block: 1rem;
+    border-top: 1px solid var(--gobo-color-text);
   }
 
   .alt-nav a {

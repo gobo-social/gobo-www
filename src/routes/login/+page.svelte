@@ -1,5 +1,6 @@
 <script>
   import PlainHeader from "$lib/components/headers/PlainHeader.svelte"
+  import PlainFooter from "$lib/components/headers/PlainFooter.svelte";
   import Center from "$lib/components/layouts/Center.svelte"
 </script>
 
@@ -24,10 +25,11 @@
     </div>
 
     <section class="alt-nav">
-      <p>New to GOBO? <a href="/signup"> Create an Account </a></p>
+      <p>New to Gobo? <a href="/signup"> Create an Account </a></p>
     </section>
   </section>
 </Center>
+<PlainFooter></PlainFooter>
 
 <style>
   #outseta-login {

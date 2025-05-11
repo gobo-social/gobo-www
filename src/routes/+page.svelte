@@ -1,5 +1,6 @@
 <script>
   import PlainHeader from "$lib/components/headers/PlainHeader.svelte"
+  import PlainFooter from "$lib/components/headers/PlainFooter.svelte"
   import CenterAlt from "$lib/components/layouts/CenterAlt.svelte"
   import "@shoelace-style/shoelace/dist/components/button/button.js";
   import { goto } from "$app/navigation";
@@ -37,8 +38,8 @@
       </sl-button>
     </section>
   </section>
-  
 </CenterAlt>
+<PlainFooter></PlainFooter>
 
 
 

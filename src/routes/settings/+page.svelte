@@ -18,6 +18,8 @@
     <NavLink href="/settings/appearance">Appearance</NavLink>
     <NavLink href="/settings/identities">Identities</NavLink>
     <NavLink href="/settings/filters">Filters</NavLink>
+    <NavLink href="/terms-of-service">Terms of Service</NavLink>
+    <NavLink href="/privacy-policy">Privacy Policy</NavLink>
     <NavLink href="#" action={logout}>Logout</NavLink>
   </VerticalNav>
 </div>

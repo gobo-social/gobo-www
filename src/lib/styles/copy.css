@@ -1,8 +1,15 @@
+/*
+  TODO: We need to refactor the use of gobo-copy class
+  I was sloppy when I applied gobo-copy. It's used in a number of
+  panel areas that aren't really copy.
+*/
+
 .gobo-copy {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   max-width: var(--gobo-max-width-primary);
+  width: 100%;
   margin: 0;
   margin-top: var(--gobo-height-spacer);
   padding: var(--gobo-height-spacer-flex) var(--gobo-width-spacer-flex);
