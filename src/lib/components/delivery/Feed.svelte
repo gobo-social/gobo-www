@@ -6,7 +6,7 @@
   import { Feed } from "$lib/engines/delivery/index.js";
   import { State } from "$lib/engines/store.js";
   import { Scroll } from "$lib/engines/scroll.js";
-  import { NavCommands } from '$lib/channels/nav-commands.js';
+  import { KeyboardCommands } from '$lib/channels/keyboard-commands.js';
   import * as deliveryStores from "$lib/stores/delivery.js";
 
   let _feed;
@@ -63,26 +63,6 @@
     Feed.pull( 25 );
   };
 
-  Handle.commandNav = ( event ) => {
-    if (window.location.pathname !== "/posts") {
-      return;
-    }
-    if ( event.detail.name === "scroll top" ) {
-      _feed.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "smooth"
-      });
-    }
-    if ( event.detail.name === "scroll bottom" ) {
-      _feed.scrollTo({
-        top: _feed.scrollHeight,
-        left: 0,
-        behavior: "smooth"
-      });
-    }
-  };
-
 
   Render.reset();
   onMount(() => {
@@ -91,9 +71,10 @@
     Render.listen( deliveryStores.command, Handle.command );
     _feed.addEventListener( "scroll", Handle.scroll );
     _feed.addEventListener( "gobo-infinite-scroll", Handle.infiniteScroll );
-    const navCommandsTarget = NavCommands.listen( Handle.commandNav );
+    const machine = KeyboardCommands.subscribe( _feed );
+    machine.run(); // Listens for scroll commands. Resolves when channel closes.
     return () => {
-      NavCommands.stop( navCommandsTarget );
+      KeyboardCommands.unsubscribe( machine );
       _feed.removeEventListener( "scroll", Handle.scroll );
       _feed.removeEventListener( "gobo-infinite-scroll", Handle.infiniteScroll );
       scroll.halt();
