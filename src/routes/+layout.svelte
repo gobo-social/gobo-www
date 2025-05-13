@@ -9,6 +9,7 @@
   import "$lib/styles/reset.css";
   import "$lib/styles/main-child.css";
   import "$lib/styles/copy.css";
+  import "$lib/styles/copy-special.css";
   import "$lib/styles/divider.css";
   import "$lib/styles/form.css";
   import "$lib/styles/radio-button.css";

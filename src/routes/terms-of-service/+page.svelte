@@ -10,7 +10,7 @@
 <PlainHeader></PlainHeader>
 <Center>
   <div class="main-child">
-    <section class="gobo-copy">
+    <section class="gobo-copy-special">
       {@html content}        
     </section>
   </div>
@@ -18,7 +18,7 @@
 
 
 <style>
-  .gobo-copy {
+  .gobo-copy-special {
     margin-top: var(--gobo-height-spacer);
   }
 </style>

@@ -27,6 +27,11 @@
   margin-top: 1rem;
 }
 
+.gobo-copy h3 {
+  font-size: var(--sl-font-size-medium);
+  margin-top: 1rem;
+}
+
 .gobo-copy p + h2 {
   font-size: var(--sl-font-size-large);
   margin-top: 2rem;

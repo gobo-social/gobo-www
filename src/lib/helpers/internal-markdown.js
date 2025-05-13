@@ -1,5 +1,6 @@
 import Markdown from "markdown-it";
 import mila from "markdown-it-link-attributes";
+import tlds from "tlds";
 
 // This markdown-it instance is configured for internal use so we can prepare
 // the main content of documents like terms-of-service as Markdown, then
@@ -20,6 +21,8 @@ const md = new Markdown({
   // For the full list of replacements, see https://github.com/markdown-it/markdown-it/blob/master/lib/rules_core/replacements.js
   typographer:  true,
 });
+
+md.linkify.tlds(tlds);
 
 // Ensure any links politely link out to another tab.
 md.use( mila, {

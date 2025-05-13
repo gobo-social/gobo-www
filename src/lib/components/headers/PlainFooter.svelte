@@ -16,7 +16,7 @@
     background: var(--gobo-color-null);
     color: var(--gobo-color-text);
     border-top: 1px solid var(--gobo-color-border-panel);
-    height: 4.625rem;
+    height: 3rem;
   }
 
 
@@ -29,5 +29,9 @@
     justify-content: center;
     align-items: center;
     gap: var(--gobo-width-spacer);
+  }
+
+  footer a {
+    font-size: 14px;
   }
 </style>
