@@ -4,7 +4,7 @@ Web Client Frontend for the Gobo Project
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `npm install` or `yarn`), start a development server:
+Once you've created a project and installed dependencies with `pnpm install` (or `npm install` or `yarn`), start a development server:
 
 ```bash
 npm run dev
@@ -23,7 +23,7 @@ npx gulp build
 
 ## Publish Code Changes
 ```bash
-AWS_PROFILE=idpi npx gulp publish --environment=production-www
+AWS_PROFILE=name npx gulp publish --environment=production-www
 ```
 
 
@@ -33,12 +33,12 @@ AWS_PROFILE=idpi npx gulp publish --environment=production-www
 
 ### Wesite S3 + CloudFront Distribution
 ```bash
-AWS_PROFILE=idpi npx gulp deploy --environment=production-www
+AWS_PROFILE=name npx gulp deploy --environment=production-www
 ```
 
 ### CloudFront Distribution for Gobo API
 ```bash
-AWS_PROFILE=idpi npx gulp deploy --environment=production-api
+AWS_PROFILE=name npx gulp deploy --environment=production-api
 ```
 
 

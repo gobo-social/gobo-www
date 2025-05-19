@@ -11,12 +11,14 @@
 
 <style>
   footer {
+    flex: 0 0 auto;
+    width: 100%;
     flex-direction: row;
     flex-wrap: nowrap;
     background: var(--gobo-color-null);
     color: var(--gobo-color-text);
     border-top: 1px solid var(--gobo-color-border-panel);
-    height: 3rem;
+    min-height: 3rem;
   }
 
 

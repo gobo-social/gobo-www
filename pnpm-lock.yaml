@@ -42,8 +42,8 @@ dependencies:
     specifier: ^0.0.6
     version: 0.0.6
   '@dashkite/joy':
-    specifier: ^0.4.0
-    version: 0.4.0
+    specifier: ^0.3.16
+    version: 0.3.16
   '@dashkite/reactive':
     specifier: 0.0.2
     version: 0.0.2

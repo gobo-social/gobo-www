@@ -28,8 +28,10 @@
       <p>New to Gobo? <a href="/signup"> Create an Account </a></p>
     </section>
   </section>
+
+  <div class="vertical-spacer"></div>
+  <PlainFooter></PlainFooter>
 </Center>
-<PlainFooter></PlainFooter>
 
 <style>
   #outseta-login {
@@ -65,6 +67,11 @@
     margin-top: 2rem;
   }
 
+  /* TODO: This is hacky, but we need to rework the page layout stuff. */
+  .vertical-spacer {
+    flex: 1 1 100%;
+    min-height: 1rem;
+  }
 
 
   /* header {
