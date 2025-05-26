@@ -20,6 +20,23 @@ production-www:
       - gobo.social
       - www.gobo.social
 
+staging-www:
+  namespace: gobo
+  buckets:
+    - name: www-staging.gobo.social
+      website:
+        index: index.html
+        error: index.html
+  edge:
+    name: www-staging
+    certificate:
+      verification: gobo.social
+    origins:
+      - domain: www-staging.gobo.social.s3-website-us-east-1.amazonaws.com
+        protocol: http     
+    aliases:
+      - www-staging.gobo.social
+
 # production-api:
 #   namespace: gobo
 #   edge:

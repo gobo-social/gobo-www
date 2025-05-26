@@ -15,6 +15,11 @@
   background: var(--gobo-color-panel);
   border: var(--gobo-border-panel);
   border-radius: var(--gobo-border-radius);
+  font-family: "Lora";
+}
+
+.gobo-copy-special :is(h1, h2, h3, h4, h5, h6) {
+  font-family: "Roboto";
 }
 
 .gobo-copy-special h1 {

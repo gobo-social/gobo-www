@@ -5,14 +5,7 @@
 </script>
 
 <PlainHeader></PlainHeader>
-<Center>
-  <!-- <div
-    id="outseta-login"
-    data-o-auth="1"
-    data-mode="embed"
-    data-widget-mode="login">
-  </div> -->
-  
+<Center> 
   <section class="outseta-embed-reshape">
     <header class="outseta-logo-header">
       <img src="/images/gobo-logo.svg" />
