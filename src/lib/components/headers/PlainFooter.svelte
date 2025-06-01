@@ -18,7 +18,7 @@
     background: var(--gobo-color-null);
     color: var(--gobo-color-text);
     border-top: 1px solid var(--gobo-color-border-panel);
-    min-height: 3rem;
+    height: 3rem;
   }
 
 

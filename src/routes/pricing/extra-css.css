@@ -1,0 +1,29 @@
+table {
+  max-width: 50rem;
+}
+
+table tr {
+  display: flex;
+}
+
+table th {
+  font-weight: 900;
+  display: flex;
+  flex-direction: column;
+}
+
+table tr th,
+table tr td {
+  width: 7rem;
+  text-align: center;
+}
+
+table tr th:nth-child(1),
+table tr td:nth-child(1) {
+  width: 10rem;
+}
+
+table th,
+table td {
+  padding: 1rem 0.5rem;
+}

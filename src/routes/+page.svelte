@@ -21,28 +21,28 @@
         <img src="/images/gobo-logo.svg" alt="Main logo for the Gobo application">
       </a>
     
-      <div class="spacer"></div>
-    
-      <sl-button
-        class="action"
-        pill
-        href="/pricing">
-        Pricing
-      </sl-button>
-    
-      <sl-button
-        class="action"
-        pill
-        href="/login">
-        Login
-      </sl-button>
-    
-      <sl-button
-        class="submit"
-        pill
-        href="/signup">
-        Signup
-      </sl-button>
+      <div class="buttons">
+        <a id="pricing-link"
+          class="action"
+          pill
+          href="/pricing">
+          Pricing
+        </a>
+      
+        <sl-button
+          class="neutral"
+          pill
+          href="/login">
+          Login
+        </sl-button>
+      
+        <sl-button
+          class="submit"
+          pill
+          href="/signup">
+          Signup
+        </sl-button>
+      </div>
     </nav>
   </header>
   
@@ -116,9 +116,13 @@
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+    background: var(--gobo-color-panel);
   }
 
   header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -132,15 +136,33 @@
   header > nav {
     margin: 0;
     padding: 0;
+    flex: 1 0 auto;
+    max-width: 72rem;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    gap: 1rem;
     color: var(--gobo-color-text);
   }
 
-  header > nav .spacer {
+  header nav a:has(img) {
+    min-height: 3rem;
+    min-width: 3rem;
+  }
+
+  header > nav .buttons {
     flex: 1 1 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  @media ( min-width: 680px ) {
+    header > nav .buttons {
+      gap: 2rem;
+    }
   }
 
   main {
@@ -164,7 +186,7 @@
     justify-content: center;
     align-items: center;
     padding: 0.5rem;
-    font-family: "Lora";
+    font-family: "Open Sans";
   }
 
   /* @media ( min-width: 680px ) {
@@ -179,20 +201,34 @@
 
   section :global(h1) {
     font-family: "Roboto";
-    font-size: 96px;
+    font-size: 72px;
     font-weight: 900;
+    text-align: center;
     padding-bottom: 9.6px;
     margin-bottom: 1rem;
+    margin-top: 3rem;
+  }
+
+  @media ( min-width: 680px ) {
+    section :global(h1) {
+      font-size: 96px;
+    }
   }
 
   section :global(h2) {
     font-family: "Roboto";
-    font-size: 60px;
+    font-size: 48px;
     font-weight: 900;
     padding-bottom: 9.6px;
     margin-top: 80px;
     margin-bottom: 80px;
     text-align: center;
+  }
+  
+  @media ( min-width: 680px ) {
+    section :global(h1) {
+      font-size: 60px;
+    }
   }
 
   section :global(h3) {
@@ -217,6 +253,8 @@
     margin-bottom: 40px;
   }
 
+  
+
   .inner {
     max-width: 40rem;
   }
@@ -228,11 +266,14 @@
     flex: 0 0 auto;
   }
 
+  #pricing-link {
+    color: var(--gobo-color-text);
+    font-weight: 900;
+  }
+
   #hero {
     width: 100%;
-    height: 26rem;
     position: relative;
-    background: url("/images/login.svg");
     background-size: cover;
     background-position: center top;
     display: flex;
@@ -296,6 +337,16 @@
     align-items: center;
     text-align: center;
     margin-bottom: 5rem;
+  }
+
+  section .inner {
+    margin-inline: 0.5rem;
+  }
+
+  @media ( min-width: 680px ) {
+    section .inner {
+      margin-inline: 0;
+    }
   }
 
   @media ( min-width: 900px ) {

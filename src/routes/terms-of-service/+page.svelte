@@ -1,6 +1,5 @@
 <script>
   import PlainHeader from "$lib/components/headers/PlainHeader.svelte"
-  import Center from "$lib/components/layouts/Center.svelte"
   import { toHTML } from "$lib/helpers/internal-markdown.js";
   import text from "./text.md?raw";
 
@@ -8,13 +7,13 @@
 </script>
 
 <PlainHeader></PlainHeader>
-<Center>
+<main class="center">
   <div class="main-child">
     <section class="gobo-copy-special">
       {@html content}        
     </section>
   </div>
-</Center>
+</main>
 
 
 <style>

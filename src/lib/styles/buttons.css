@@ -60,3 +60,14 @@ sl-button.hollow::part(label),
 sl-button.hollow:hover::part(label) {
   color: var(--gobo-color-text);
 }
+
+sl-button.neutral::part(base),
+sl-button.neutral:hover::part(base) {
+  background: var(--gobo-color-border-panel);
+  border: none;
+}
+
+sl-button.neutral::part(label),
+sl-button.neutral:hover::part(label) {
+  color: var(--gobo-color-text);
+}

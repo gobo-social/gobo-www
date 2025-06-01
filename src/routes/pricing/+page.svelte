@@ -7,76 +7,128 @@
 
 <PlainHeader></PlainHeader>
   
-<div id="outer">
-  <h1>Pricing</h1>
+<div class="outer">
+  <main>
+    <h1>Pricing</h1>
 
-  <p> Start for free. Upgrade for the fancy stuff.</p>
+    <p> Start for free. Upgrade for the fancy stuff.</p>
+  
+    <div id="section-list">
+      <section class="card">
+        <h2>Plan 1</h2>
+  
+        <p class="description">The description for the plan goes here</p>
+  
+        <p class="price">
+          <span>$10</span>
+          <span>/</span>
+          <span>month</span>
+        </p>
+  
+        <sl-button class="action" pill>Action Statement Here</sl-button>
+  
+        <ul>
+          <li>
+            <sl-icon src="/icons/check2-circle.svg"/> 
+            <span>Feature 1</span>
+          </li>
+          <li>
+            <sl-icon src="/icons/check2-circle.svg"/> 
+            <span>Feature 2</span>
+          </li>
+          <li>
+            <sl-icon src="/icons/check2-circle.svg"/> 
+            <span>Feature 3</span>
+          </li>
+        </ul>
+      </section>
+  
+  
+      <section class="card">
+        <h2>Plan 2</h2>
+  
+        <p class="description">The description for the plan goes here</p>
+  
+        <p class="price">
+          <span>$10</span>
+          <span>/</span>
+          <span>month</span>
+        </p>
+  
+        <sl-button class="action" pill>Action Statement Here</sl-button>
+  
+        <ul>
+          <li>
+            <sl-icon src="/icons/check2-circle.svg"/> 
+            <span>Feature 1</span>
+          </li>
+          <li>
+            <sl-icon src="/icons/check2-circle.svg"/> 
+            <span>Feature 2</span>
+          </li>
+          <li>
+            <sl-icon src="/icons/check2-circle.svg"/> 
+            <span>Feature 3</span>
+          </li>
+        </ul>
+      </section>
+  
+  
+      <section class="card">
+        <h2>Plan 3</h2>
+  
+        <p class="description">The description for the plan goes here</p>
+  
+        <p class="price">
+          <span>$10</span>
+          <span>/</span>
+          <span>month</span>
+        </p>
+  
+        <sl-button class="action" pill>Action Statement Here</sl-button>
+  
+        <ul>
+          <li>
+            <sl-icon src="/icons/check2-circle.svg"/> 
+            <span>Feature 1</span>
+          </li>
+          <li>
+            <sl-icon src="/icons/check2-circle.svg"/> 
+            <span>Feature 2</span>
+          </li>
+          <li>
+            <sl-icon src="/icons/check2-circle.svg"/> 
+            <span>Feature 3</span>
+          </li>
+        </ul>
+      </section>
+    
+    
+    </div>
+  </main>
 
-  <table>
-    <thead>
-      <tr>
-        <th></th>
-        <th>
-          Free <sl-button class="action" size="small" pill>Literally $0</sl-button>
-        </th>
-        <th>
-          Basic <sl-button class="action" size="small" pill>$9/mo</sl-button>
-        </th>
-        <th>
-          Standard <sl-button class="action" size="small" pill>$29/mo</sl-button>
-        </th>
-        <th>
-          Professional <sl-button class="action" size="small" pill>$79/mo</sl-button>
-        </th>
-        <th>
-          Advanced <sl-button class="action" size="small" pill>$139/mo</sl-button>
-        </th>
-        <th>
-          Enterprise <sl-button class="action" size="small" pill>Contact Us</sl-button>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Subscribers</td>
-        <td>Up to 100</td>
-        <td>Up to 1,000</td>
-        <td>Up to 5,000</td>
-        <td>Up to 10,000</td>
-        <td>Up to 20,000</td>
-        <td>Unlimited</td>
-      </tr>
-      <tr>
-        <td>Scheduling</td>
-        <td><sl-icon src="/icons/check2-circle.svg"></sl-icon></td>
-        <td><sl-icon src="/icons/check2-circle.svg"></sl-icon></td>
-        <td><sl-icon src="/icons/check2-circle.svg"></sl-icon></td>
-        <td><sl-icon src="/icons/check2-circle.svg"></sl-icon></td>
-        <td><sl-icon src="/icons/check2-circle.svg"></sl-icon></td>
-        <td><sl-icon src="/icons/check2-circle.svg"></sl-icon></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="vertical-spacer"></div>
   <PlainFooter></PlainFooter>
 </div>
 
+
 <style>
-  #outer {
-    width: 100%;
+  .outer {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: space-between;
+    overflow-y: scroll;
   }
 
-  #outer > h1 {
+  main {
+    padding-bottom: 3rem;
+  }
+
+  h1 {
     text-align: center;
   }
 
-  #outer > p {
+  main > p {
     text-align: center;
   }
 
@@ -86,6 +138,7 @@
     font-weight: 900;
     padding-bottom: 9.6px;
     margin-bottom: 1rem;
+    margin-top: 2.5rem;
   }
 
   h2 {
@@ -117,38 +170,63 @@
     min-height: 1rem;
   }
 
-  table {
-    max-width: 50rem;
-  }
-
-  table tr {
-    display: flex;
-  }
-
-  table th {
-    font-weight: 900;
-    display: flex;
-    flex-direction: column;
-  }
-
-  table tr th,
-  table tr td {
-    width: 7rem;
-    text-align: center;
-  }
-
-  table tr th:nth-child(1),
-  table tr td:nth-child(1) {
-    width: 10rem;
-  }
-
-  table th,
-  table td {
-    padding: 1rem 0.5rem;
-  }
-
   sl-button::part(label) {
     padding-inline: 12px;
+  }
+
+  #section-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .card {
+    background: var(--gobo-color-panel);
+    border: var(--gobo-panel-border);
+    border-radius: var(--gobo-border-radius);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 25rem;
+  }
+
+  .card h2 {
+    font-size: 36px;
+    margin: 0;
+  }
+
+  .card p {
+    margin: 0;
+    font-size: 20px;
+  }
+
+  .card p :first-child {
+    font-size: 40px;
+    font-weight: 900;
+  }
+
+  .card .description {
+    height: 4rem;
+  }
+
+  .card sl-button {
+    margin-top: 2rem;
+  }
+
+  .card ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style-type: none;
+    padding: 0;
+    margin-top: 2rem;
+  }
+
+  .card ul li {
+    display: flex;
+    gap: 1rem;
   }
 
 </style>

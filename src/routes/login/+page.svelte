@@ -1,11 +1,10 @@
 <script>
   import PlainHeader from "$lib/components/headers/PlainHeader.svelte"
   import PlainFooter from "$lib/components/headers/PlainFooter.svelte";
-  import Center from "$lib/components/layouts/Center.svelte"
 </script>
 
 <PlainHeader></PlainHeader>
-<Center> 
+<main class="center">
   <section class="outseta-embed-reshape">
     <header class="outseta-logo-header">
       <img src="/images/gobo-logo.svg" />
@@ -22,11 +21,16 @@
     </section>
   </section>
 
+  <!-- TODO: The semantics are bad here. move footer out of main -->
   <div class="vertical-spacer"></div>
   <PlainFooter></PlainFooter>
-</Center>
+</main>
 
 <style>
+  main {
+    margin-bottom: 0;
+  }
+
   #outseta-login {
     width: 100%;
   }
@@ -62,7 +66,7 @@
 
   /* TODO: This is hacky, but we need to rework the page layout stuff. */
   .vertical-spacer {
-    flex: 1 1 100%;
+    flex: 1 1 0;
     min-height: 1rem;
   }
 
