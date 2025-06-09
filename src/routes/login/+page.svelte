@@ -1,30 +1,33 @@
 <script>
-  import PlainHeader from "$lib/components/headers/PlainHeader.svelte"
+  import LandingHeader from "$lib/components/headers/LandingHeader.svelte";
   import PlainFooter from "$lib/components/headers/PlainFooter.svelte";
 </script>
 
-<PlainHeader></PlainHeader>
-<main class="center">
-  <section class="outseta-embed-reshape">
-    <header class="outseta-logo-header">
-      <img src="/images/gobo-logo.svg" />
-    </header>
-    <div
-      id="outseta-login"
-      data-o-auth="1"
-      data-mode="embed"
-      data-widget-mode="login">
-    </div>
 
-    <section class="alt-nav">
-      <p>New to Gobo? <a href="/signup"> Create an Account </a></p>
+<div class="landing-outer">
+  <LandingHeader />
+
+  <main class="landing">
+    <section class="outseta-embed-reshape">
+      <header class="outseta-logo-header">
+        <img src="/images/gobo-logo.svg" />
+      </header>
+      <div
+        id="outseta-login"
+        data-o-auth="1"
+        data-mode="embed"
+        data-widget-mode="login">
+      </div>
+  
+      <section class="alt-nav">
+        <p>New to Gobo? <a href="/signup"> Create an Account </a></p>
+      </section>
     </section>
-  </section>
+  </main>
 
-  <!-- TODO: The semantics are bad here. move footer out of main -->
-  <div class="vertical-spacer"></div>
-  <PlainFooter></PlainFooter>
-</main>
+  <PlainFooter />
+</div>
+
 
 <style>
   main {
@@ -39,10 +42,16 @@
     width: 100%;
     max-width: 500px;
     margin-top: var(--gobo-height-spacer);
-    padding-bottom: 3rem;
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
     background: var(--gobo-color-panel);
-    border-radius: var(--gobo-border-radius);
     border: var(--gobo-border-panel);
+  }
+
+  @media (min-width: 500px) {
+    .outseta-embed-reshape {
+      border-radius: var(--gobo-border-radius);
+    }
   }
 
   .alt-nav {
@@ -63,39 +72,4 @@
     align-items: center;
     margin-top: 2rem;
   }
-
-  /* TODO: This is hacky, but we need to rework the page layout stuff. */
-  .vertical-spacer {
-    flex: 1 1 0;
-    min-height: 1rem;
-  }
-
-
-  /* header {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    background: var(--gobo-color-panel);
-    color: var(--gobo-color-text);
-    border-bottom: var(--gobo-border-panel);
-    height: 4.625rem;
-  }
-
-
-  header > nav {
-    flex: 1 1 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
-  header > nav > .logo {
-    font-family: var(--sl-font-sans);
-    font-size: var(--sl-font-size-2x-large);
-    text-decoration: none;
-    color: initial;
-    padding: 1rem; 
-    flex: 0 0 auto;
-  } */
-
 </style>

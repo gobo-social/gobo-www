@@ -8,9 +8,9 @@
   // Pull in more application specific CSS stylings.
   import "$lib/styles/reset.css";
   import "$lib/styles/layout.css";
+  import "$lib/styles/landing.css";
   import "$lib/styles/main-child.css";
   import "$lib/styles/copy.css";
-  import "$lib/styles/copy-special.css";
   import "$lib/styles/divider.css";
   import "$lib/styles/form.css";
   import "$lib/styles/radio-button.css";

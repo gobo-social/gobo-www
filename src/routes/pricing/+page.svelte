@@ -1,14 +1,14 @@
 <script>
   import "@shoelace-style/shoelace/dist/components/button/button.js";
   import "@shoelace-style/shoelace/dist/components/icon/icon.js";
-  import PlainHeader from "$lib/components/headers/PlainHeader.svelte"
+  import LandingHeader from "$lib/components/headers/LandingHeader.svelte";
   import PlainFooter from "$lib/components/headers/PlainFooter.svelte";
 </script>
 
-<PlainHeader></PlainHeader>
-  
-<div class="outer">
-  <main>
+<div class="landing-outer">
+  <LandingHeader />
+
+  <main class="landing">
     <h1>Pricing</h1>
 
     <p> Start for free. Upgrade for the fancy stuff.</p>
@@ -107,19 +107,11 @@
     </div>
   </main>
 
-  <PlainFooter></PlainFooter>
+  <PlainFooter />
 </div>
 
 
 <style>
-  .outer {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow-y: scroll;
-  }
-
   main {
     padding-bottom: 3rem;
   }
@@ -150,24 +142,11 @@
     margin-bottom: 80px;
   }
 
-  h3 {
-    font-family: "Roboto";
-    font-size: 24px;
-    font-weight: 900;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-
   p {
     font-size: 20px;
     line-height: 32px;
     margin-top: 0;
     margin-bottom: 40px;
-  }
-
-  .vertical-spacer {
-    flex: 1 1 100%;
-    min-height: 1rem;
   }
 
   sl-button::part(label) {
@@ -184,12 +163,18 @@
   .card {
     background: var(--gobo-color-panel);
     border: var(--gobo-panel-border);
-    border-radius: var(--gobo-border-radius);
+    border-radius: 0;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
     max-width: 25rem;
+  }
+
+  @media (min-width: 25rem) {
+    .card {
+      border-radius: var(--gobo-border-radius);
+    }
   }
 
   .card h2 {

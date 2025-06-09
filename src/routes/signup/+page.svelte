@@ -1,41 +1,42 @@
 <script>
-  import PlainHeader from "$lib/components/headers/PlainHeader.svelte"
+  import LandingHeader from "$lib/components/headers/LandingHeader.svelte";
   import PlainFooter from "$lib/components/headers/PlainFooter.svelte";
 </script>
 
-<PlainHeader></PlainHeader>
-<main class="center">
-  <section class="outseta-embed-reshape">
-    <header class="outseta-logo-header">
-      <img src="/images/gobo-logo.svg" />
-    </header>
+<div class="landing-outer">
+  <LandingHeader />
 
-    <div
-      id="outseta-signup"
-      data-o-auth="1"
-      data-widget-mode="register"
-      data-plan-family-uid="L9nENZQZ"
-      data-skip-plan-options="true"
-      data-mode="embed">
-    </div>
-
-    <section class="alt-nav">
-      <p>By signing up, you agree to Gobo's
-        <a href="/terms-of-service" target="_blank" rel="noopener noreferrer nofollow">
-          Terms&nbsp;of&nbsp;Service
-        </a> and 
-        <a href="/privacy-policy" target="_blank" rel="noopener noreferrer nofollow">
-          Privacy&nbsp;Policy.
-        </a>
-      </p>
-      <p>Already have a Gobo account? <a href="/login"> Log in </a></p>
+  <main class="landing">
+    <section class="outseta-embed-reshape">
+      <header class="outseta-logo-header">
+        <img src="/images/gobo-logo.svg" />
+      </header>
+  
+      <div
+        id="outseta-signup"
+        data-o-auth="1"
+        data-widget-mode="register"
+        data-plan-family-uid="L9nENZQZ"
+        data-skip-plan-options="true"
+        data-mode="embed">
+      </div>
+  
+      <section class="alt-nav">
+        <p>By signing up, you agree to Gobo's
+          <a href="/terms-of-service" target="_blank" rel="noopener noreferrer nofollow">
+            Terms&nbsp;of&nbsp;Service
+          </a> and 
+          <a href="/privacy-policy" target="_blank" rel="noopener noreferrer nofollow">
+            Privacy&nbsp;Policy.
+          </a>
+        </p>
+        <p>Already have a Gobo account? <a href="/login"> Log in </a></p>
+      </section>
     </section>
-  </section>
+  </main>
 
-  <!-- TODO: The semantics are bad here. move footer out of main -->
-  <div class="vertical-spacer"></div>
-  <PlainFooter></PlainFooter>
-</main>
+  <PlainFooter />
+</div>
 
 
 <style>
@@ -51,9 +52,17 @@
     width: 100%;
     max-width: 500px;
     margin-top: var(--gobo-height-spacer);
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
     background: var(--gobo-color-panel);
-    border-radius: var(--gobo-border-radius);
+    border-radius: 0;
     border: var(--gobo-border-panel);
+  }
+
+  @media (min-width: 500px) {
+    .outseta-embed-reshape {
+      border-radius: var(--gobo-border-radius);
+    }
   }
 
   .alt-nav {
@@ -77,11 +86,5 @@
     justify-content: center;
     align-items: center;
     margin-top: 2rem;
-  }
-
-  /* TODO: This is hacky, but we need to rework the page layout stuff. */
-  .vertical-spacer {
-    flex: 1 1 100%;
-    min-height: 1rem;
   }
 </style>

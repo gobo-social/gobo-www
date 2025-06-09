@@ -1,30 +1,32 @@
 <footer>
   <nav>
-    <a href="/terms-of-service" target="_blank" rel="noopener noreferrer nofollow">
+    <a href="/terms-of-service">
       Terms of Service
     </a>
-    <a href="/privacy-policy" target="_blank" rel="noopener noreferrer nofollow">
+    <a href="/privacy-policy">
       Privacy Policy
     </a>
   </nav>
+  <p>&copy; 2025 Gobo Inc. All rights reserved; Have a great day.</p>
 </footer>
 
 <style>
   footer {
     flex: 0 0 auto;
     width: 100%;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background: var(--gobo-color-null);
     color: var(--gobo-color-text);
     border-top: 1px solid var(--gobo-color-border-panel);
-    height: 3rem;
+    height: 4rem;
   }
 
 
   footer > nav {
-    height: 100%;
-    flex: 1 1 100%;
+    width: 100%;
     margin: 0;
     display: flex;
     flex-direction: row;
@@ -35,5 +37,13 @@
 
   footer a {
     font-size: 14px;
+  }
+
+  footer p {
+    font-size: 12px;
+    color: var(--gobo-color-text);
+    display: flex;
+    justify-content: center;
+    margin-top: 4px;
   }
 </style>
