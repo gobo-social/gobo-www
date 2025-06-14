@@ -7,7 +7,7 @@
       Privacy Policy
     </a>
   </nav>
-  <p>&copy; 2025 Gobo Inc. All rights reserved; Have a great day.</p>
+  <p>&copy; 2025 Gobo Inc. Have a great day.</p>
 </footer>
 
 <style>
