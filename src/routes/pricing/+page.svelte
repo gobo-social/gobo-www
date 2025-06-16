@@ -8,10 +8,13 @@
 <div class="landing-outer">
   <LandingHeader />
 
-  <main class="landing">
-    <h1>Pricing</h1>
+  <main class="landing landing-copy">
+    <section id="hero">
+      <h1>Pricing</h1>
 
-    <p> Start for free. Upgrade for the fancy stuff.</p>
+      <p class="big"> Start for free. Upgrade for the fancy stuff.</p>
+    </section>
+    
   
     <div id="section-list">
       <section class="card">
@@ -116,37 +119,8 @@
     padding-bottom: 3rem;
   }
 
-  h1 {
+  #hero {
     text-align: center;
-  }
-
-  main > p {
-    text-align: center;
-  }
-
-  h1 {
-    font-family: "Roboto";
-    font-size: 72px;
-    font-weight: 900;
-    padding-bottom: 9.6px;
-    margin-bottom: 1rem;
-    margin-top: 2.5rem;
-  }
-
-  h2 {
-    font-family: "Roboto";
-    font-size: 60px;
-    font-weight: 900;
-    padding-bottom: 9.6px;
-    margin-top: 80px;
-    margin-bottom: 80px;
-  }
-
-  p {
-    font-size: 20px;
-    line-height: 32px;
-    margin-top: 0;
-    margin-bottom: 40px;
   }
 
   sl-button::part(label) {
@@ -158,6 +132,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
+    margin-top: 2rem;
   }
 
   .card {
@@ -169,12 +144,6 @@
     flex-direction: column;
     gap: 1rem;
     max-width: 25rem;
-  }
-
-  @media (min-width: 25rem) {
-    .card {
-      border-radius: var(--gobo-border-radius);
-    }
   }
 
   .card h2 {
@@ -212,6 +181,12 @@
   .card ul li {
     display: flex;
     gap: 1rem;
+  }
+
+  @media (min-width: 25rem) {
+    .card {
+      border-radius: var(--gobo-border-radius);
+    }
   }
 
 </style>

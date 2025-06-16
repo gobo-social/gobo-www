@@ -30,12 +30,12 @@
     <section id="supported-platforms">
       
       <div id="platforms">
-        <img src="/images/logo-bluesky.png" alt="bluesky"/>
         <img src="/images/logo-linkedin.png" alt="linkedIn"/>
+        <img src="/images/logo-x.png" alt="x"/>
+        <img src="/images/logo-bluesky.png" alt="bluesky"/>
+        <img src="/images/logo-threads.png" alt="threads"/>
         <img src="/images/logo-mastodon.png" alt="mastodon"/>
         <img src="/images/logo-reddit.png" alt="reddit"/>
-        <img src="/images/logo-threads.png" alt="threads"/>
-        <img src="/images/logo-x.png" alt="x"/>
       </div>
 
       <sl-button
@@ -163,10 +163,18 @@
 
   #section-a .inner {
     max-width: 42rem;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
+    margin: 0 -1.5rem;
     background: var(--gobo-color-null);
     border: var(--gobo-border-panel);
-    border-radius: var(--gobo-border-radius);
+    border-radius: 0;
+  }
+
+  @media (min-width: 42rem) {
+    #section-a .inner {
+      border-radius: var(--gobo-border-radius);
+      margin: 0;
+    }
   }
 
   #section-a .inner :global(h2) {
@@ -196,7 +204,7 @@
     flex: 1 1 100%;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    padding: 1.5rem;
     background: var(--gobo-color-null);
     border-radius: 0;
   }
@@ -210,6 +218,7 @@
     }
     .flex-column {
       border-radius: var(--gobo-border-radius);
+      padding: 1rem;
     }
   }    
 
