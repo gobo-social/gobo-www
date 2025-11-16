@@ -7,7 +7,7 @@
 
 <header>
   <nav>
-    <a class="logo" href="/home">
+    <a class="logo" href="/">
       <img src="/images/gobo-logo.svg" alt="Main logo for the Gobo application">
     </a>
     <div class="spacer" aria-hidden=true ></div>

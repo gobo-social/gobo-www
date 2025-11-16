@@ -49,7 +49,7 @@
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <sl-button
       pill
-      href="/home"
+      href="/"
       class="{current === "home" ? "current" : ""}"
       on:click={Handle.refreshHome}>
       <div slot="prefix">

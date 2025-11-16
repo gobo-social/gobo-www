@@ -52,7 +52,7 @@
   <sl-button
     class="home {current === 'home' ? "current" : ""}"
     pill
-    href="/home"
+    href="/"
     on:click={Handle.refreshHome}>
     <div slot="prefix">
       <sl-icon class="home" src="/icons/home.svg" slot="prefix"></sl-icon>

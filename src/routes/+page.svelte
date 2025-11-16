@@ -20,22 +20,10 @@
 <CenterAlt>
   <section>
     <h1>All your (open) social media in one&nbsp;place</h1>
-    <section class="buttons">
-      <sl-button
-        variant="primary"
-        size=medium
-        on:click={login}
-        on:keydown={login}>
-        Log in
-      </sl-button>
-
-      <sl-button
-        variant="primary"
-        size=medium
-        on:click={signup}
-        on:keydown={signup}>
-        Sign up
-      </sl-button>
+    <section class="buttons gobo-copy">
+      <p>Gobo is temporarily paused while we work on a major upgrade. We're grateful to folks who have participated in our beta, and we're excited to show you what we're working on.</p> 
+      <p>In the meantime, don't hesitate to reach out if you have any questions, <a href="mailto:support@gobo.social">support@gobo.social</a></p>
+      <p>See you soon!</p>
     </section>
   </section>
 </CenterAlt>
@@ -45,9 +33,14 @@
 
 
 <style>
+  h1 {
+    text-align: center;
+    text-transform: capitalize;
+  }
+
   .buttons {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
     gap: 1rem;
@@ -55,8 +48,7 @@
     margin-top: 2rem;
   }
 
-  h1 {
-    text-align: center;
-    text-transform: capitalize;
+  .buttons p {
+    font-size: 1.15rem;
   }
 </style>
