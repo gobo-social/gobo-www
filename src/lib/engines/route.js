@@ -17,7 +17,7 @@ const extractQuery = function ( url ) {
 
 // TODO: We need a landing page to direct people when there is callback problem.
 const handleCallbackError = async function () {
-  goto( "/callback-error" );
+  goto( "/" );
 };
 
 const successfulAuth = async () => {
@@ -123,51 +123,27 @@ const Route = {};
 
 // Take care to avoid an infinite routing loop.
 Route.default = async () => {
-  if ( (await App.isLoggedOut()) ) {
-    // We can stop here.
-  } else {
-    try {
-      if ( await App.hasAccess( "general" )) {
-        // This person is allowed access to application features.
-        return goto( "/home" );
-      } else {
-        return goto( "/permissions" );
-      }
-    } catch ( error ) {
-      console.error( error );
-      await App.logout();
-    }
-  }
+  App.logout();
+  return goto( "/" );
+  // if ( (await App.isLoggedOut()) ) {
+  //   // We can stop here.
+  // } else {
+  //   try {
+  //     if ( await App.hasAccess( "general" )) {
+  //       // This person is allowed access to application features.
+  //       return goto( "/home" );
+  //     } else {
+  //       return goto( "/permissions" );
+  //     }
+  //   } catch ( error ) {
+  //     console.error( error );
+  //     await App.logout();
+  //   }
+  // }
 };
 
 // Detect and handle any redirect or callback.
 Route.handle = async () => {
-  try {
-    const url = new URL( document.location );
-    const query = extractQuery( url );
-    Bootstrap.run();
-    
-    switch ( url.pathname ) {
-      case "/":
-        // Logged in people need to be sent Home
-        await Route.default();
-        break;
-      case "/auth-callback":
-        // Callback from Auth0, primary application authentication
-        await Callback.auth( query );
-        break;
-      case "/add-identity-callback":
-        // Identity authentication from Mastodon, Reddit, and Twitter
-        await Callback.identity( query );
-        break;
-      default:
-        // No-op passthrough
-        return null;        
-    }
-  } catch ( error ) {
-    console.error( error );
-    await handleCallbackError();
-  }
 };
 
 export { 

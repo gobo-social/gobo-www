@@ -4,16 +4,6 @@
   import CenterAlt from "$lib/components/layouts/CenterAlt.svelte"
   import "@shoelace-style/shoelace/dist/components/button/button.js";
   import { goto } from "$app/navigation";
-
-  const login = async function ( event ) {
-    event.preventDefault();
-    goto("/login");
-  };
-
-  const signup = async function ( event ) {
-    event.preventDefault();
-    goto("/signup");
-  };
 </script>
 
 <PlainHeader></PlainHeader>
